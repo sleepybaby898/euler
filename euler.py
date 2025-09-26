@@ -48,9 +48,12 @@ def get_colour(speed, max_speed=10):
 
     return (r, g, b)
 
-def fps_counter():
+def fps_counter(circ):
     fps = str(int(clock.get_fps()))
-    pygame.display.set_caption(f'FPS: {fps}')
+    circlecount = 0
+    for i in circ:
+        circlecount += 1
+    pygame.display.set_caption(f'FPS: {fps} | Circles: {str(circlecount)}')
 
 class Planet:
     def __init__(self, x, y, radius=30, strength=50000):
@@ -314,6 +317,6 @@ while True:
         planet.draw(screen)
 
     # render graphics
-    fps_counter()
+    fps_counter(circles)
 
     pygame.display.flip()  # refresh display
